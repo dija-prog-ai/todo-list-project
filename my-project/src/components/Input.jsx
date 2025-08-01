@@ -1,24 +1,26 @@
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 
-
-
-const Input = ({label,type,placeholder,onChange}) => {
-    const [showPassword, setShowPassword] = useState(false);
-    
-    return ( <>
-            <div className="space-y-4 flex flex-col pb-6"></div>
-        <label htmlFor={label}> {label} </label>
+const Input = ({ label, type, placeholder, onChange, defaultValue,value }) => {
+  const [showPassword, setShowPassword] = useState(false);
+  return (
+    <div className="flex flex-col ">
+      <label className="text-sm pb-2" htmlFor={label}>
+        {label}
+      </label>
+      <div className="relative">
         <input
-          className="transition-all hover:opacity-80 duration-700 bg-gray-300 text-white flex items-center justify-center py-[6px]  px-4  gap-4 rounded-lg"
           onChange={onChange}
-          id={label}
-          placeholder={placeholder}
+          className="border-[1.5px] border-gray-400 rounded-md px-3 py-2 w-full"
           type={
             type !== "password" ? type : !showPassword ? "password" : "text"
           }
+          id={label}
+          value={value}
+          placeholder={placeholder}
+          defaultValue={defaultValue}
         />
-             {type === "password" && (
+        {type === "password" && (
           <div className="absolute hover:cursor-pointer right-3 top-1/2 transform -translate-y-1/2">
             {showPassword ? (
               <EyeOff size={16} onClick={() => setShowPassword(false)} />
@@ -27,9 +29,9 @@ const Input = ({label,type,placeholder,onChange}) => {
             )}
           </div>
         )}
-    </> );
-}
- 
-   
- 
+      </div>
+    </div>
+  );
+};
+
 export default Input;

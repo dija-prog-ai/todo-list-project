@@ -1,5 +1,6 @@
 import { LogOut,User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+
 const NavBar = () => {
   const navigate = useNavigate();
   return (
